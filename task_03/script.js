@@ -72,22 +72,24 @@ disconnectButton.addEventListener('click', () => {
 
 sendButton.addEventListener('click', () => {
     let message = input.value;
-    if(message === ''){
+    if(message.trim() === ''){
         return
-    } else if (connected) {
+    };
+
+    if (connected) {
         displayClientMessage(message);
         websocket.send(message);
         input.value = "";
     } else {
         displayClientMessage('Please connect to the server');
         input.value = "";
-    }
+    };
 });
 
 geoButton.addEventListener('click', () => {
-    if(!navigator.geolocation) {
-        displayClientMessage('Your client does not support geolocation')
-    } else {
+    if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError);
+    } else {
+        displayClientMessage('Your client does not support geolocation')
     }
 });
