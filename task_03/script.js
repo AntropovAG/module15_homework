@@ -31,6 +31,7 @@ function displayClientMessage(message) {
     element.classList.add('message-client');
     element.innerHTML = message;
     chatDisplay.appendChild(element);
+    chatDisplay.scrollTo(0, chatDisplay.scrollHeight)
 };
 
 function displayServerMessage(message) {
@@ -38,6 +39,7 @@ function displayServerMessage(message) {
     element.classList.add('message-server');
     element.innerHTML = message;
     chatDisplay.appendChild(element);
+    chatDisplay.scrollTo(0, chatDisplay.scrollHeight)
 };
 
 connectButton.addEventListener('click', () => {
